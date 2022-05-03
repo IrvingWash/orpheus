@@ -6,16 +6,30 @@ import { Track, TrackDocument } from './schemas/track.schema';
 import { Comment, CommentDocument } from './schemas/comment.schema';
 import { AddTrackDto } from './dtos/add-track.dto';
 import { AddCommentDto } from './dtos/add-comment.dto';
+import { FileService, FileType } from 'src/file/file.service';
 
 @Injectable()
 export class TrackService {
 	public constructor(
 		@InjectModel(Track.name) private trackModel: Model<TrackDocument>,
-		@InjectModel(Comment.name) private commentModel: Model<CommentDocument>
+		@InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
+		private fileService: FileService
 	) {}
 
-	public async addTrack(dto: AddTrackDto): Promise<Track> {
-		const track = await this.trackModel.create({ ...dto, listens: 0 });
+	public async addTrack(
+		dto: AddTrackDto,
+		picture: Express.Multer.File,
+		audio: Express.Multer.File
+	): Promise<Track> {
+		const audioPath = this.fileService.addFile(FileType.Audio, audio);
+		const picturePath = this.fileService.addFile(FileType.Picture, picture);
+
+		const track = await this.trackModel.create({
+			...dto,
+			listens: 0,
+			audio: audioPath,
+			picture: picturePath,
+		});
 		
 		return track;
 	}

@@ -5,6 +5,7 @@ import { Track, TrackSchema } from './schemas/track.schema';
 import { Comment, CommentSchema } from './schemas/comment.schema';
 import { TrackController } from './track.controller';
 import { TrackService } from './track.service';
+import { FileService } from 'src/file/file.service';
 
 @Module({
 	imports: [
@@ -22,7 +23,10 @@ import { TrackService } from './track.service';
 		),
 	],
 	controllers: [TrackController],
-	providers: [TrackService],
+	providers: [
+		TrackService,
+		FileService,
+	],
 })
 export class TrackModule {
 
