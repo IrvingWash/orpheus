@@ -19,5 +19,8 @@ module.exports = {
 		'eol-last': ['error'],
 		'object-curly-spacing': ['error', 'always'],
 		'comma-dangle': ['error', 'always-multiline'],
+		'@typescript-eslint/explicit-function-return-type': ['error'],
+		'@typescript-eslint/explicit-member-accessibility': ['error'],
+		'semi': ['error', 'always'],
 	},
 };
