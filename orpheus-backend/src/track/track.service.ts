@@ -75,6 +75,18 @@ export class TrackService {
 
 		return comment;
 	}
+
+	public async listen(id: ObjectId): Promise<void> {
+		const track = await this.trackModel.findById(id);
+
+		if (track === null) {
+			throwTrackNotFoundError();
+		}
+
+		track.listens += 1;
+
+		await track.save();
+	}
 }
 
 function throwTrackNotFoundError(): never {

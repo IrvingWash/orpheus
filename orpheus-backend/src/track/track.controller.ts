@@ -72,4 +72,11 @@ export class TrackController {
 	): Promise<Comment> {
 		return await this.trackService.addComment(dto);
 	}
+
+	@Post('/listen/:id')
+	public async listen(
+		@Param('id') id: ObjectId
+	): Promise<void> {
+		return this.trackService.listen(id);
+	}
 }
