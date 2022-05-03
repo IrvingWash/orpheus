@@ -1,7 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ObjectId } from 'mongoose';
 
+import { AddCommentDto } from './dtos/add-comment.dto';
 import { AddTrackDto } from './dtos/add-track.dto';
+import { Comment } from './schemas/comment.schema';
 import { Track } from './schemas/track.schema';
 import { TrackService } from './track.service';
 
@@ -35,5 +37,12 @@ export class TrackController {
 		@Param('id') id: ObjectId
 	): Promise<ObjectId> {
 		return await this.trackService.deleteTrack(id);
+	}
+
+	@Post('/comment')
+	public async addComment(
+		@Body() dto: AddCommentDto
+	): Promise<Comment> {
+		return await this.trackService.addComment(dto);
 	}
 }

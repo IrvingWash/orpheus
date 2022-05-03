@@ -5,6 +5,7 @@ import { Model, ObjectId } from 'mongoose';
 import { Track, TrackDocument } from './schemas/track.schema';
 import { Comment, CommentDocument } from './schemas/comment.schema';
 import { AddTrackDto } from './dtos/add-track.dto';
+import { AddCommentDto } from './dtos/add-comment.dto';
 
 @Injectable()
 export class TrackService {
@@ -26,7 +27,7 @@ export class TrackService {
 	}
 
 	public async getTrack(id: ObjectId): Promise<Track> {
-		const track = await this.trackModel.findById(id);
+		const track = await this.trackModel.findById(id).populate('comments');
 
 		if (track === null) {
 			throwTrackNotFoundError();
@@ -43,6 +44,22 @@ export class TrackService {
 		}
 
 		return track._id;
+	}
+
+	public async addComment(dto: AddCommentDto): Promise<Comment> {
+		const track = await this.trackModel.findById(dto.trackId);
+
+		if (track === null) {
+			throwTrackNotFoundError();
+		}
+
+		const comment = await this.commentModel.create({ ...dto });
+
+		track.comments.push(comment._id);
+
+		await track.save();
+
+		return comment;
 	}
 }
 
