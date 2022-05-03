@@ -5,6 +5,7 @@ import {
 	Get,
 	Param,
 	Post,
+	Query,
 	UploadedFiles,
 	UseInterceptors,
 } from '@nestjs/common';
@@ -48,8 +49,18 @@ export class TrackController {
 	}
 
 	@Get()
-	public async getTracks(): Promise<Track[]> {
-		return await this.trackService.getTracks();
+	public async getTracks(
+		@Query('count') count: number,
+		@Query('offset') offset: number,
+	): Promise<Track[]> {
+		return await this.trackService.getTracks(count, offset);
+	}
+
+	@Get('/search')
+	public async searchTracks(
+		@Query('query') query: string
+	): Promise<Track[]> {
+		return await this.trackService.searchTracks(query);
 	}
 
 	@Get('/:id')

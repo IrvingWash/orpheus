@@ -34,8 +34,18 @@ export class TrackService {
 		return track;
 	}
 
-	public async getTracks(): Promise<Track[]> {
-		const tracks = await this.trackModel.find();
+	public async getTracks(count = 10, offset = 0): Promise<Track[]> {
+		const tracks = await this.trackModel.find().skip(offset).limit(count);
+
+		return tracks;
+	}
+
+	public async searchTracks(query: string): Promise<Track[]> {
+		const tracks = await this.trackModel.find({
+			title: {
+				$regex: new RegExp(query, 'i'),
+			},
+		});
 
 		return tracks;
 	}
