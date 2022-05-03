@@ -8,6 +8,8 @@ async function start(): Promise<void> {
 
 		const app = await NestFactory.create(AppModule);
 
+		app.enableCors();
+
 		await app.listen(port, () => console.log(`Server started on port ${port}`));
 	} catch(error) {
 		console.log(error);
