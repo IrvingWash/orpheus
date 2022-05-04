@@ -13,6 +13,7 @@ export function App(): JSX.Element {
 				<Route path='/' element={ <Home /> } />
 				<Route path='/tracks' element={ <Tracks /> } />
 				<Route path='/add-track' element={ <AddTrack /> } />
+				<Route path='/tracks/:track-title' element={ <div>Track Info</div> } />
 			</Routes>
 		</>
 	);
