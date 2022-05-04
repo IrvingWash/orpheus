@@ -1,11 +1,17 @@
 import React, { ReactElement, useState } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import HomeIcon from '@mui/icons-material/Home';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-import MenuIcon from '@mui/icons-material/Menu';
+
+import {
+	Box,
+	Drawer,
+	Button,
+	List,
+} from '@mui/material';
+
+import {
+	Home as HomeIcon,
+	LibraryMusic as LibraryMusicIcon,
+	Menu as MenuIcon,
+} from '@mui/icons-material';
 
 import { DrawerListItem } from './drawer-list-item';
 
