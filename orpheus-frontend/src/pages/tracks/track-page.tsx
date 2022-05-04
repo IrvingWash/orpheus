@@ -11,24 +11,24 @@ import { Track } from '../../objects-and-constants';
 
 import styles from './track-page.module.css';
 
-export function TrackPage(): JSX.Element {
-	const track: Track = {
-		_id: '1',
-		artist: 'Orgone',
-		title: 'Void Of Course',
-		text: 'Complex',
-		audio: 'a',
-		picture: 'a',
-		listens: 391,
-		comments: [
-			{
-				_id: '1',
-				username: 'WI',
-				message: 'Cool',
-			},
-		],
-	};
+const track: Track = {
+	_id: '1',
+	artist: 'Orgone',
+	title: 'Void Of Course',
+	text: 'Complex',
+	audio: 'a',
+	picture: 'a',
+	listens: 391,
+	comments: [
+		{
+			_id: '1',
+			username: 'WI',
+			message: 'Cool',
+		},
+	],
+};
 
+export function TrackPage(): JSX.Element {
 	const commentsContent = track.comments.map((comment) => (
 		<div className={ styles['comments-wrapper'] }>
 			<div className={ styles['comment-author'] }>{ comment.username }</div>
