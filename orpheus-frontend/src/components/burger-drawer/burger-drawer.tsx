@@ -25,12 +25,18 @@ const drawerItems = [
 export function BurgerDrawer(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false);
 
-	const listItems = drawerItems.map((drawerItem): ReactElement => (
+	const listItems = drawerItems.map((
+		{
+			text,
+			link,
+			icon,
+		}
+	): ReactElement => (
 		<DrawerListItem
-			text={ drawerItem.text }
-			link={ drawerItem.link }
-			icon={ drawerItem.icon }
-			key={ drawerItem.text }
+			text={ text }
+			link={ link }
+			icon={ icon }
+			key={ text }
 		/>
 	));
 
