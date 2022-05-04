@@ -7,7 +7,45 @@ import {
 
 import { Link } from 'react-router-dom';
 
+import { TrackList } from '../../components/track-list/track-list';
+import { Track } from '../../objects-and-constants';
+
 import styles from './tracks.module.css';
+
+const tracks: Track[] = [
+	{
+		_id: '1',
+		artist: 'Orgone',
+		title: 'Void Of Course',
+		text: 'Complex',
+		audio: 'a',
+		picture: 'a',
+		listens: 391,
+		comments: [
+			{
+				_id: '1',
+				username: 'WI',
+				message: 'Cool',
+			},
+		],
+	},
+	{
+		_id: '2',
+		artist: 'Castevet',
+		title: 'Grey Matter',
+		text: 'Unknown',
+		audio: 'a',
+		picture: 'a',
+		listens: 112,
+		comments: [
+			{
+				_id: '1',
+				username: 'WI',
+				message: 'Alchemy',
+			},
+		],
+	},
+];
 
 export function Tracks(): JSX.Element {
 	return (
@@ -27,6 +65,7 @@ export function Tracks(): JSX.Element {
 							</Button>
 						</Grid>
 					</Box>
+					<TrackList tracks={ tracks } />
 				</Card>
 			</Grid>
 		</div>

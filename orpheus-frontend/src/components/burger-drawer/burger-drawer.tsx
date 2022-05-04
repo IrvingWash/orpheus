@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
 	Box,
@@ -37,7 +37,7 @@ export function BurgerDrawer(): JSX.Element {
 			link,
 			icon,
 		}
-	): ReactElement => (
+	): JSX.Element => (
 		<DrawerListItem
 			text={ text }
 			link={ link }
