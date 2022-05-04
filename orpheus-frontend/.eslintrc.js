@@ -6,7 +6,10 @@ module.exports = {
 		tsconfigRootDir : __dirname, 
 		sourceType: 'module',
 	},
-	plugins: ['@typescript-eslint/eslint-plugin'],
+	plugins: [
+		'@typescript-eslint/eslint-plugin',
+		'eslint-plugin-react'
+	],
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 	],
@@ -22,5 +25,6 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': ['error'],
 		'@typescript-eslint/explicit-member-accessibility': ['error'],
 		'semi': ['error', 'always'],
+		"react/jsx-curly-spacing": [2, "always"],
 	},
 };
