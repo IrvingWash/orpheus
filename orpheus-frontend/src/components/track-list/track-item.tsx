@@ -26,7 +26,7 @@ export function TrackItem(props: TrackItemProps): JSX.Element {
 
 	return (
 		<Link
-			to={ `/tracks/:track-title` }
+			to={ `/tracks/${track.title}` }
 			className={ styles.link }
 		>
 			<Card className={ styles.track }>

@@ -57,7 +57,7 @@ export function Tracks(): JSX.Element {
 							<h1>Track list</h1>
 							<Button>
 								<Link
-									to="/add-track"
+									to='/add-track'
 									className={ styles.link }
 								>
 									Upload

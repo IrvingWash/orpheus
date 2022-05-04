@@ -58,7 +58,7 @@ export function BurgerDrawer(): JSX.Element {
 			>
 				<Box
 					sx={ { width: 250 } }
-					role="presentation"
+					role='presentation'
 					onClick={ toggleDrawer(false) }
 					onKeyDown={ toggleDrawer(false) }
 				>

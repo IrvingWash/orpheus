@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/home/home';
 import { Tracks } from './pages/tracks/tracks';
 import { AddTrack } from './pages/tracks/add-track';
+import { TrackPage } from './pages/tracks/track-page';
 import { BurgerDrawer } from './components/burger-drawer/burger-drawer';
 
 export function App(): JSX.Element {
@@ -13,7 +14,7 @@ export function App(): JSX.Element {
 				<Route path='/' element={ <Home /> } />
 				<Route path='/tracks' element={ <Tracks /> } />
 				<Route path='/add-track' element={ <AddTrack /> } />
-				<Route path='/tracks/:track-title' element={ <div>Track Info</div> } />
+				<Route path='/tracks/:title' element={ <TrackPage /> } />
 			</Routes>
 		</>
 	);
