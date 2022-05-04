@@ -1,13 +1,16 @@
-import styles from './App.module.css';
-import BurgerDrawer from './components/burger-drawer';
+import { Route, Routes } from 'react-router-dom';
+
+import { Home } from './pages/home';
+import { BurgerDrawer } from './components/burger-drawer';
 
 export function App(): JSX.Element {
 	return (
 		<>
 			<BurgerDrawer />
-			<div className={ styles.center }>
-				<h1>Let's listen to...</h1>
-			</div>
+			<Routes>
+				<Route path='/' element={ <Home /> } />
+				<Route path='/tracks' element={ <p>Tracks</p> } />
+			</Routes>
 		</>
 	);
 }

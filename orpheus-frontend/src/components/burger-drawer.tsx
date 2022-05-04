@@ -8,8 +8,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import { Link } from 'react-router-dom';
 
-export default function BurgerDrawer(): JSX.Element {
+export function BurgerDrawer(): JSX.Element {
 	const [isVisible, setIsVisible] = useState(false);
 
 	return (
@@ -46,14 +47,20 @@ export default function BurgerDrawer(): JSX.Element {
 				onKeyDown={ toggleDrawer(false) }
 			>
 				<List>
-					{['Home', 'Track list'].map((text, index) => (
-						<ListItem button key={ text }>
-							<ListItemIcon>
-								{index % 2 === 0 ? <HomeIcon /> : <LibraryMusicIcon />}
-							</ListItemIcon>
-							<ListItemText primary={ text } />
-						</ListItem>
-					))}
+					{
+						['Home', 'Track list'].map((text) => (
+							<Link
+								to={ text === 'Home' ? '/' : '/tracks' }
+							>
+								<ListItem button key={ text }>
+									<ListItemIcon>
+										{text === 'Home' ? <HomeIcon /> : <LibraryMusicIcon />}
+									</ListItemIcon>
+									<ListItemText primary={ text } />
+								</ListItem>
+							</Link>
+						))
+					}
 				</List>
 			</Box>
 		);
