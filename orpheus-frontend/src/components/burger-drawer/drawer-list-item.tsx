@@ -3,6 +3,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
 
+import styles from './drawer-list-item.module.css';
+
 interface DrawerListItemProps {
 	text: string;
 	link: string;
@@ -18,7 +20,8 @@ export function DrawerListItem(props: DrawerListItemProps): JSX.Element {
 
 	return (
 		<Link
-		 to={ link }
+			className={ styles.link }
+			to={ link }
 		>
 			<ListItem button key={ text }>
 				<ListItemIcon>
